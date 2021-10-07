@@ -1,0 +1,14 @@
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\bin\Debug\netcoreapp3.1\HW3.exe
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\bin\Debug\netcoreapp3.1\HW3.deps.json
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\bin\Debug\netcoreapp3.1\HW3.runtimeconfig.json
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\bin\Debug\netcoreapp3.1\HW3.runtimeconfig.dev.json
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\bin\Debug\netcoreapp3.1\HW3.dll
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\bin\Debug\netcoreapp3.1\HW3.pdb
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.csproj.AssemblyReference.cache
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.GeneratedMSBuildEditorConfig.editorconfig
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.AssemblyInfoInputs.cache
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.AssemblyInfo.cs
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.csproj.CoreCompileInputs.cache
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.dll
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.pdb
+D:\資策會\Unity線上課\C#線上課\HomeWork\HW3\obj\Debug\netcoreapp3.1\HW3.genruntimeconfig.cache
