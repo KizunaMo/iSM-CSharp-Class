@@ -6,13 +6,9 @@ namespace HW4
 {
     class Items
     {
-
-        static public bool GetBoom()
-        {
-            bool getBoom = false;
-
-
-            return getBoom;
-        }
+        /// <summary>
+        /// 炸彈傷害
+        /// </summary>
+        public int boomDamage { private set; get; } = 100;
     }
 }

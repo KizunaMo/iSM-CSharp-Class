@@ -6,15 +6,13 @@ namespace HW4
     {
         static void Main(string[] args)
         {
-            Player player = new Player();
-            SettingMaster setting = new SettingMaster();
+            Player.instance= new Player();
+            Bag.instance = new Bag();
+            SettingMaster settingMaster = new SettingMaster();
+            Master[] masters = settingMaster.ProduceNormalMaster();
 
-            setting.ProduceNormalMaster();
-            PlayerOption.PlayerCmd();
-
-
-
-
+            PlayerOption playerOption =new PlayerOption();
+            playerOption.PlayerCmd(masters);
         }
     }
 }

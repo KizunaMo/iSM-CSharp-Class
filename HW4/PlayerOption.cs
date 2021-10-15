@@ -4,47 +4,51 @@ using System.Text;
 
 namespace HW4
 {
-    public class PlayerOption
+    class PlayerOption
     {
-        static PlayerOption playerOption = new PlayerOption();
         /// <summary>
         /// 玩家輸入對應指令
         /// </summary>
-        public static void PlayerCmd()
+        public void PlayerCmd(Master[]masters)
         {
             bool gameOver = false;
             while (!gameOver)
             {
+                RolesState rolesState = new RolesState();
+                Battle battle = new Battle();
                 ShowMenu();
-                RolesState state = new RolesState();
                 string cmd = Console.ReadLine();
                 switch (cmd.ToLower())
                 {
-                    case "0": //通過再確認機制後結束遊戲
+                    case "0": 
                         gameOver = KeepGameOrNot();
                         break;
-                    case "1": //顯示玩家狀態
-                        state.ListPlayerState();
+                    case "1": 
+                        rolesState.ListPlayerState();
                         break;
-                    case "2": //進入選怪
-                        Confirm();
+                    case "2": 
+                        bool enterBattle = Confirm();
+                        if (enterBattle)
+                            battle.PlayerVSMaster(masters);
                         break;
-                    case "3": //顯示怪物狀態列
-                        state.ListMasterStates();
+                    case "3": 
+                        rolesState.ListMasterStates(masters);
                         break;
                 }
             }
-            
         }
-
-        public static void ShowMenu()
+        /// <summary>
+        /// 顯示菜單
+        /// </summary>
+        public void ShowMenu()
         {
             Console.WriteLine("\n 0:選單(是否繼續遊戲)" + "\n 1:顯示玩家狀態" + "\n 2:進入選怪" + "\n 3:怪物目前狀態\n");
         }
-
-        
-
-        static bool KeepGameOrNot()
+        /// <summary>
+        /// 確認是否退出遊戲
+        /// </summary>
+        /// <returns></returns>
+        public bool KeepGameOrNot()
         {
             Console.WriteLine("再次確認 Y:結束遊戲 / N:繼續遊戲");
             string check = Console.ReadLine();
@@ -59,7 +63,11 @@ namespace HW4
             }
             return false;
         }
-        public static bool Confirm()
+        /// <summary>
+        /// 確認是否進入戰鬥
+        /// </summary>
+        /// <returns></returns>
+        public bool Confirm()
         {
             Console.WriteLine("確認是否進入戰鬥 Y/N\n");
             string checkBattle = Console.ReadLine();
