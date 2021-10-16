@@ -1,0 +1,10 @@
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\bin\Debug\netcoreapp3.1\GameLibrary.deps.json
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\bin\Debug\netcoreapp3.1\GameLibrary.dll
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\bin\Debug\netcoreapp3.1\GameLibrary.pdb
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.csproj.AssemblyReference.cache
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.AssemblyInfoInputs.cache
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.AssemblyInfo.cs
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.csproj.CoreCompileInputs.cache
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.dll
+D:\資策會\Unity線上課\C#線上課\HomeWork\GameLibrary\GameLibrary\obj\Debug\netcoreapp3.1\GameLibrary.pdb
