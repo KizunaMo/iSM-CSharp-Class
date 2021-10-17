@@ -15,7 +15,7 @@ namespace HW5
             int temporaryIndex = Data.instance.mobs[random.Next(10)].index;//抽一隻怪獸出來
             UI.instance.EnterBattle(Data.instance.mobs[temporaryIndex].index, Data.instance.mobs[temporaryIndex].hp, Data.instance.mobs[temporaryIndex].exp);
             bool revival = false;
-            while (Data.instance.mobs[temporaryIndex].states == 0 || Data.instance.mobs[temporaryIndex].states == 1)
+            while (Data.instance.mobs[temporaryIndex].states == (int)Mob.States.滿血 || Data.instance.mobs[temporaryIndex].states == (int)Mob.States.失血)
             {
                 PlayerCmd playerCmd = new PlayerCmd();
                 switch (playerCmd.Cmd())
@@ -24,25 +24,29 @@ namespace HW5
                         revival = Data.instance.mobs[temporaryIndex].Injured(Player.instance.power, Data.instance.mobs[temporaryIndex]);
                         if (revival)
                         {
-                            Data.instance.player.GetItem(1);
+                            if (Data.instance.player.GetItem((int)Items.items.炸彈))
+                                UI.instance.GetItem((int)Items.items.炸彈);
                             Data.instance.player.GetExp(Data.instance.mobs[temporaryIndex]);
-                            UI.instance.EndBattle(Data.instance.mobs[temporaryIndex].index);
+                            UI.instance.EndBattle(Data.instance.mobs[temporaryIndex].exp);
                         }
                         break;
 
                     case "4":
-                        Bag bag = new Bag();
-                        if (!bag.CheckItem(1))
+                        if (!Data.instance.playerBag.CheckItem((int)Items.items.炸彈))
                         {
-                            UI.instance.NoMore(1);
+                            UI.instance.NoMore((int)Items.items.炸彈);
                         }
                         else
                         {
+                            UI.instance.UseItemAttack((int)Items.items.炸彈);
+                            revival = Data.instance.mobs[temporaryIndex].Injured(Data.instance.items.bombDamage, Data.instance.mobs[temporaryIndex]);
+                            Data.instance.player.UseItem((int)Items.items.炸彈);
                             if (revival)
                             {
-                                Data.instance.player.GetItem(1);
+                                if (Data.instance.player.GetItem((int)Items.items.炸彈))
+                                    UI.instance.GetItem((int)Items.items.炸彈);
                                 Data.instance.player.GetExp(Data.instance.mobs[temporaryIndex]);
-                                UI.instance.EndBattle(Data.instance.mobs[temporaryIndex].index);
+                                UI.instance.EndBattle(Data.instance.mobs[temporaryIndex].exp);
                             }
                         }
                         break;
@@ -52,7 +56,7 @@ namespace HW5
                         break;
                 }
             }
-            if (Data.instance.mobs[temporaryIndex].states == 2)
+            if (Data.instance.mobs[temporaryIndex].states == (int)Mob.States.死亡)
             {
                 UI.instance.AlomstDead(Data.instance.mobs[temporaryIndex].index);
             }
@@ -71,7 +75,6 @@ namespace HW5
                         break;
                 }
             }
-                
         }
     }
 }

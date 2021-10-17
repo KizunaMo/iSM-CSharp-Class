@@ -69,7 +69,7 @@ namespace HW5
             Console.WriteLine("怪物狀態( 0滿血 / 1失血 / 2死亡 )");
             for (int i = 0; i < mob.Length; i++)
             {
-                Console.WriteLine($"怪獸編號{Data.instance.mobs[i].index} 怪獸狀態 {(Mob.MasterStates)Data.instance.mobs[i].states} 怪獸生命{Data.instance.mobs[i].hp} ");
+                Console.WriteLine($"怪獸編號{Data.instance.mobs[i].index} 怪獸狀態 {(Mob.States)Data.instance.mobs[i].states} 怪獸生命{Data.instance.mobs[i].hp} ");
             }
         }
         /// <summary>
@@ -95,9 +95,9 @@ namespace HW5
         /// <summary>
         /// 戰鬥結束
         /// </summary>
-        public void EndBattle(int mobIndex)
+        public void EndBattle(int mobExp)
         {
-            Console.WriteLine("玩家獲得經驗值 " + mobIndex + "\n當前戰鬥結束");
+            Console.WriteLine("玩家獲得經驗值 " + mobExp + "\n當前戰鬥結束");
         }
         /// <summary>
         /// 列印沒有該物品可使用
@@ -139,6 +139,29 @@ namespace HW5
         public void DeadMob(int mobIndex)
         {
             Console.WriteLine("怪物" + mobIndex + "死亡");
+        }
+
+        /// <summary>
+        /// 列印怪獸受到多少傷害，血量降至0
+        /// </summary>
+        /// <param name="damage"></param>
+        public void HurtMob(int damage)
+        {
+            Console.WriteLine("造成" + damage + "傷害" + "\n怪物血量歸0");
+        }
+        /// <summary>
+        /// 列印怪獸受到多少傷害，血量高於0時使用。
+        /// </summary>
+        public void A(int damage,Mob mob)
+        {
+            Console.WriteLine("造成" + damage + "傷害" + "\n怪物剩餘血量:" + mob.hp);
+        }
+        /// <summary>
+        /// 使用道具進行攻擊
+        /// </summary>
+        public void UseItemAttack(int itemIndex)
+        {
+            Console.WriteLine($"使用道具{(Items.items)itemIndex}進行攻擊");
         }
     }
 }

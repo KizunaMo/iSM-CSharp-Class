@@ -35,34 +35,39 @@ namespace HW5
             mob.hp = mob.maxHp;
         }
         /// <summary>
-        /// 獲得物品
+        /// 是否獲得物品
         /// </summary>
         /// <param name="index"></param>
-        public void GetItem(int index)
+        public bool GetItem(int index)
         {
             Random random = new Random();
-            bool boom = random.Next(0, 2) == 0;
-            if (boom == true)
+            bool getItem = random.Next(0, 2) == 0;
+            if (getItem == true)
             {
                 for (int i = 0; i < Data.instance.playerBag.bag.Length; i++)
                 {
                     if (Data.instance.playerBag.bag[i] == 0)
                     {
                         Data.instance.playerBag.bag[i] = index;
-                        break;
+                        return true;
                     }
                 }
-                UI.instance.GetItem(index);
             }
+            return false;
         }
         /// <summary>
         /// 使用物品
         /// </summary>
         /// <returns></returns>
-        public int UseItem()
+        public void UseItem(int itemIndex)
         {
-            int index = -1;
-            return index;
+            for (int i = 0; i < Data.instance.playerBag.bag.Length; i++)
+            {
+                if (Data.instance.playerBag.bag[i] == itemIndex)
+                {
+                    Data.instance.playerBag.bag[i] = 0;
+                }
+            }
         }
         /// <summary>
         /// 玩家獲得經驗值

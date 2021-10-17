@@ -12,6 +12,7 @@ namespace HW5
         public Bag playerBag = new Bag();
         public Mob[] mobs = new Mob[10];
         public Mob[] deadMobs = new Mob[10];
+        public Items items = new Items();
 
 
         public Data()
@@ -40,7 +41,7 @@ namespace HW5
                 mobs[i].exp = rand.Next(0, 300);
                 mobs[i].index = i;
                 mobs[i].hp = mobs[i].maxHp;
-                mobs[i].states = (int)Mob.MasterStates.滿血;
+                mobs[i].states = (int)Mob.States.滿血;
             }
             return mobs;
         }

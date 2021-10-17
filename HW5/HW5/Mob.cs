@@ -14,7 +14,7 @@ namespace HW5
         /// <summary>
         /// 怪獸狀態 對應 states列印中文
         /// </summary>
-        public enum MasterStates
+        public enum States
         {
             滿血,
             失血,
