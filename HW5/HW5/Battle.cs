@@ -57,7 +57,21 @@ namespace HW5
                 UI.instance.AlomstDead(Data.instance.mobs[temporaryIndex].index);
             }
             if (revival)
-                Player.instance.Revival(Data.instance.mobs[temporaryIndex]);
+            {
+                UI.instance.LetItGo(Data.instance.mobs[temporaryIndex].index);
+                PlayerCmd playerCmd = new PlayerCmd();
+                switch (playerCmd.Cmd())
+                {
+                    case "5":
+                        Player.instance.Revival(Data.instance.mobs[temporaryIndex]);
+                        UI.instance.Revival(Data.instance.mobs[temporaryIndex].index);
+                        break;
+                    default:
+                        UI.instance.DeadMob(Data.instance.mobs[temporaryIndex].index);
+                        break;
+                }
+            }
+                
         }
     }
 }

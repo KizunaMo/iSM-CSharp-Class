@@ -26,24 +26,13 @@ namespace HW5
             mob.hp -= power;
         }
         /// <summary>
-        /// 決定是否復活怪獸
+        /// 復活怪獸
         /// </summary>
         /// <param name="mobs"></param>
         public void Revival(Mob mob)
         {
-            UI.instance.LetItGo(mob.index);
-            PlayerCmd playerCmd = new PlayerCmd();
-            if (playerCmd.Cmd() == "5")
-            {
-                mob.states = 0;
-                mob.hp = mob.maxHp;
-                UI.instance.Revival(mob.index);
-            }
-            else
-            {
-                mob.states = 2;
-                UI.instance.DeadMob(mob.index);
-            }
+            mob.states = 0;
+            mob.hp = mob.maxHp;
         }
         /// <summary>
         /// 獲得物品
