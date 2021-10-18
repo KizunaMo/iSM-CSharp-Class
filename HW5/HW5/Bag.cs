@@ -8,17 +8,6 @@ namespace HW5
     {
         public int[] bag { set; get; } = new int[10];
 
-
-
-        public void SaveItem(int item)
-        {
-
-        }
-
-        public void LoseItem(int item)
-        {
-
-        }
         /// <summary>
         /// 確認背包有沒有這項物品
         /// </summary>
