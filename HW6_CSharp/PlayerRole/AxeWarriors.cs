@@ -6,6 +6,11 @@ namespace HW6_CSharp.PlayerRole
 {
     class AxeWarriors : Player, IAttackBehavior
     {
-        public AxeWarriors(IAttackBehavior attackBehavior,string name) : base(attackBehavior,name) { }
+        private int power = 150;
+        public override int PowerDamage { get => base.PowerDamage; set => base.PowerDamage = value; }
+        public AxeWarriors(IAttackBehavior attackBehavior) : base(attackBehavior) 
+        {
+            PowerDamage = power;
+        }
     }
 }

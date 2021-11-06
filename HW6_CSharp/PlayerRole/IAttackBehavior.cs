@@ -9,6 +9,13 @@ namespace HW6_CSharp.PlayerRole
         void Attack();
     }
 
+    public class NoWeapon : IAttackBehavior
+    {
+        public void Attack()
+        {
+            Console.WriteLine($"赤手攻擊");
+        }
+    }
 
     public class SwordsAttck:IAttackBehavior
     {
@@ -18,7 +25,7 @@ namespace HW6_CSharp.PlayerRole
         }
     }
 
-    public class Axewarriors : IAttackBehavior
+    public class AxeAttack : IAttackBehavior
     {
         public void Attack()
         {

@@ -4,16 +4,16 @@ using System.Text;
 
 namespace HW6_CSharp.PlayerRole
 {
-    class Player:IAttackBehavior
+    class Player : IAttackBehavior
     {
-        private string name = "Noname";
+        private int defultPower = 10;
+        public virtual int PowerDamage { get { return defultPower; } set { defultPower = value; } }
 
         private IAttackBehavior attackBehavior;
 
-        public Player(IAttackBehavior attackBehavior,string name)
+        public Player(IAttackBehavior attackBehavior)
         {
             this.attackBehavior = attackBehavior;
-            this.name = name;
         }
 
         public void Attack()
