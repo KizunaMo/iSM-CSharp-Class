@@ -6,25 +6,28 @@ namespace HW6_CSharp
 {
     class Information
     {
-        public void IsBattle()//用協程寫寫看?
-        {
-            bool isBattle = false;
-            if (isBattle)
-            {
-                Console.WriteLine("目標 :打敗怪物龍");
-                Console.WriteLine("2//列印玩家資訊");
-                Console.WriteLine("3//列印玩家背包資訊");
-                Console.WriteLine("4//列印怪物資訊");
-                Console.WriteLine("進入戰鬥//進入挑選怪獸");
-            }
-            else
-            {
-                Console.WriteLine("武器攻擊");
-                Console.WriteLine("道具攻擊");
-                Console.WriteLine("逃跑");
-                Console.WriteLine("發呆");
-                Console.WriteLine("Win");
+        private string mainMenu = "\n Press 1 →目標: 打敗怪物龍\n Press 2 →顯示玩家資訊\n Press 3 →顯示玩家背包資訊\n Press 4 →顯示怪物資訊\n Press 5 → 進入戰鬥(挑選怪獸)";
+        private string battleMenu = "\n Press 1 →武器攻擊\n Press 2 →道具攻擊\n Press 3 →逃跑\n Press 4 →發呆\n";
+        private string deadMenu = "在戰鬥中死亡";
+        bool inBattle = true;
+        bool isDead = true;
 
+
+        public void ShowInfo(bool inBattle,bool isDead)
+        {
+            this.inBattle = inBattle;
+            this.isDead = isDead;
+            if(!inBattle)
+            {
+                Console.WriteLine(mainMenu);
+            }
+            else if(inBattle && !isDead)
+            {
+                Console.WriteLine(battleMenu);
+            }
+            else if(inBattle && isDead)
+            {
+                Console.WriteLine(deadMenu);
             }
         }
 

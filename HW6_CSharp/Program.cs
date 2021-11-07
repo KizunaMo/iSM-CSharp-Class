@@ -27,13 +27,13 @@ namespace HW6_CSharp
             Information information = new Information();
 
 
-            while (true)
-            {
-                //information.IsBattle();思考怎麼依照當下狀況列印資訊
-                playerCmd.Round();
-            }
+            //while (true)
+            //{
+            //    //information.IsBattle();思考怎麼依照當下狀況列印資訊
+            //    playerCmd.Round();
+            //}
 
-
+            information.ShowInfo(true, true);
 
             Console.WriteLine("Hello World!");
         }
