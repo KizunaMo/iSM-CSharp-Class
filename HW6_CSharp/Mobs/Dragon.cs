@@ -11,11 +11,19 @@ namespace HW6_CSharp.Mobs
 
         private int hp = 1000;
         public override int Hp { get => base.Hp; set => base.Hp = value; }
+        private int power = 120;
+        public override int Power { get => base.Power; set => base.Power = value; }
+
 
         public Dragon()
         {
             Name = name;
             Hp = hp;
+            Power = power;
+        }
+        public override int Attack()
+        {
+            return Power;
         }
     }
 }

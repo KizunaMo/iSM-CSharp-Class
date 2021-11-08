@@ -11,10 +11,16 @@ namespace HW6_CSharp.Mobs
         private int hp = 60;
         public override int Hp { get => base.Hp; set => base.Hp = value; }
 
+
         public Slime()
         {
             Name = name;
             Hp = hp;
+        }
+
+        public override int Attack()
+        {
+            return base.Power;
         }
     }
 }

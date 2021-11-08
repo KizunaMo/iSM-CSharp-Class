@@ -10,11 +10,19 @@ namespace HW6_CSharp.Mobs
         public override string Name { get => base.Name; set => base.Name = value; }
         private int hp = 300;
         public override int Hp { get => base.Hp; set => base.Hp = value; }
+        private int power = 60;
+        public override int Power { get => base.Power; set => base.Power = value; }
 
         public Goblin()
         {
             Name = name;
             Hp = hp;
+            Power = power;
+        }
+
+        public override int Attack()
+        {
+            return Power;
         }
     }
 }
