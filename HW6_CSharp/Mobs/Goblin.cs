@@ -4,13 +4,13 @@ using System.Text;
 
 namespace HW6_CSharp.Mobs
 {
-    class Goblin:Mob
+    class Goblin : Mob
     {
-        private string name = "Goblin";
+        string name = "Goblin";
         public override string Name { get => base.Name; set => base.Name = value; }
-        private int hp = 300;
+        int hp = 300;
         public override int Hp { get => base.Hp; set => base.Hp = value; }
-        private int power = 60;
+        int power = 60;
         public override int Power { get => base.Power; set => base.Power = value; }
 
         public Goblin()

@@ -6,19 +6,19 @@ namespace HW6_CSharp.Mobs
 {
     class Mob
     {
-        private string name = "";
+        string name = "";
         public virtual string Name { get { return name; } set { name = value; } }
 
-        private int hp = 0;
+        int hp = 0;
         public virtual int Hp { get { return hp; } set { hp = value; } }
 
-        private int power = 30;
+        int power = 30;
         public virtual int Power { get { return power; } set { power = value; } }
 
 
         public void PrintStatus()
         {
-            Console.WriteLine($"怪物種類{name}\n 血量:{hp}\n 怪物攻擊力{power}");
+            Console.WriteLine($"怪物種類 : {name}\n 血量:{hp}\n 怪物攻擊力{power}");
         }
 
         public bool isDead()

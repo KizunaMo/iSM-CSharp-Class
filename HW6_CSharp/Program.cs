@@ -15,10 +15,7 @@ namespace HW6_CSharp
             Information information = new Information();
             PlayerCmd playerCmd = new PlayerCmd();
             Player player = new Player(new NoWeapon());
-            MobManager mobManager = new MobManager();
-            Mob mob = new Mob();
-            bool inBattle = false;
-            bool isDead = false;
+            Battle battle = new Battle();
             bool isChoosed = true;
             while (isChoosed)
             {
@@ -27,63 +24,34 @@ namespace HW6_CSharp
 
             while (true)
             {
-
-                information.ShowInfo(inBattle, isDead);
+                information.ShowInfo(information.MainMenu);
                 int maxNumber;
-                if (!inBattle)
+                switch (playerCmd.UseControl(maxNumber = 3))
                 {
-                    switch (playerCmd.UseControl(maxNumber = 4))
-                    {
-                        case 1:
-                            player.PrintStatus();
-                            break;
-                        case 2:
-
-                            break;
-                        case 3:
-                            BattleTime(playerCmd, player, mobManager, out mob, out inBattle, out isDead);
-                            break;
-                        case 4:
-                            break;
-                    }
+                    case 1:
+                        player.PrintStatus();
+                        break;
+                    case 2:
+                        player.playerBag.Print();
+                        break;
+                    case 3:
+                        battle.BattleTime(information, playerCmd, player);
+                        if(player.Hp<=0)
+                            ChooseRole(information, playerCmd, ref player, ref isChoosed);
+                        break;
                 }
-                else
-                {
-                    switch (playerCmd.UseControl(maxNumber = 4))
-                    {
-                        case 1:
-                            player.Attack(mob, player.PowerDamage);
-                            player.BeAttack(mob.Attack());
-                            if (mob.isDead())
-                            {
-                                Console.WriteLine($"恭喜擊敗{mob.Name}");
-                                inBattle = false;
-                            }
-                            else if (player.IsDead())
-                            {
-                                inBattle = false;
-                                Console.WriteLine("重新開始");
-                                ChooseRole(information, playerCmd, ref player, ref isChoosed);
-                            }
-                            break;
-                        case 2:
-
-                            break;
-                        case 3:
-                            
-                            break;
-                        case 4:
-
-                            break;
-                    }
-                }
-                
             }
         }
-
+        /// <summary>
+        /// 選職業
+        /// </summary>
+        /// <param name="information"></param>
+        /// <param name="playerCmd"></param>
+        /// <param name="player"></param>
+        /// <param name="isChoose"></param>
         private static void ChooseRole(Information information, PlayerCmd playerCmd, ref Player player, ref bool isChoose)
         {
-            information.ChooseRole();
+            information.ShowInfo(information.ChooseRole);
             int maxNumber;
             switch (playerCmd.UseControl(maxNumber = 4))
             {
@@ -124,13 +92,5 @@ namespace HW6_CSharp
             isChoose = false;
         }
 
-        private static void BattleTime(PlayerCmd playerCmd, Player player, MobManager mobManager, out Mob mob, out bool inBattle, out bool isDead)
-        {
-            mobManager.PrintMobs();
-            mob = mobManager.PickOne(playerCmd.UseControl(mobManager.mobs.Count));
-            Battle battle = new Battle();
-            isDead = battle.Fight(player, mob);
-            inBattle = true;
-        }
     }
 }

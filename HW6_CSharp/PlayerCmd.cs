@@ -7,7 +7,7 @@ namespace HW6_CSharp
     class PlayerCmd
     {
         Queue<int> cmd = new Queue<int>();
-        private int maxNumber = 3;
+        int maxNumber = 3;
         public int Number { get { return maxNumber; } set { maxNumber = value; } }
 
         public int UseControl(int maxNumber)
@@ -17,7 +17,7 @@ namespace HW6_CSharp
             return cmd.Dequeue();
         }
 
-        private void SaveControl(int maxNumber)
+        void SaveControl(int maxNumber)
         {
             string playerCmd = Console.ReadLine();
             int n;

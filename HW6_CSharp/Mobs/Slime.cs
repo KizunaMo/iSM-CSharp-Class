@@ -4,11 +4,11 @@ using System.Text;
 
 namespace HW6_CSharp.Mobs
 {
-    class Slime:Mob
+    class Slime : Mob
     {
-        private string name = "Slime";
+        string name = "Slime";
         public override string Name { get => base.Name; set => base.Name = value; }
-        private int hp = 60;
+        int hp = 60;
         public override int Hp { get => base.Hp; set => base.Hp = value; }
 
 
