@@ -24,7 +24,7 @@ namespace HW6_CSharp.PlayerRole
         public Player(IAttackBehavior attackBehavior)
         {
             this.attackBehavior = attackBehavior;
-            playerBag = new Bag();
+            playerBag = new Bag(9,9);
         }
 
         public void Attack(Mob mob, int damage)

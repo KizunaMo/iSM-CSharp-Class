@@ -6,82 +6,85 @@ namespace HW6_CSharp
 {
     class Bag
     {
-        public int[,] bagbox;
-        int x = 9;
-        int y = 9;
-        List<Items> items = new List<Items>();
-        Items item = new Items(Items.ItemsID.healItem);
+        int width = 9;
+        int height = 9;
+        int[,] bagArray;
 
-        public Bag()
+        int[,] item = new int[2, 2];
+
+
+        public Bag(int width, int heigh)
         {
-            bagbox = new int[x, y];
-            for (int i = 0; i < x; i++)
+            this.width = width;
+            this.height = heigh;
+
+            bagArray = new int[width, heigh];
+
+            item.GetLength(0);
+            for (int i = 0; i < item.GetLength(0); i++)
             {
-                for (int j = 0; j < y; j++)
+                for (int j = 0; j < item.GetLength(1); j++)
                 {
-                    bagbox[i, j] = 0;
+                    item[i, j] = 1;
                 }
             }
         }
-
-        public void AddItem(Items item)
-        {
-            items.Add(item);
-            if (FindSpace(2, 2))
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        bagbox[i, j] += item.itemArea[i, j];
-                    }
-                }
-                for (int j = 0; j < x; j++)
-                {
-                    for (int i = 0; i < y; i++)
-                    {
-                        Console.Write(bagbox[i, j]);
-                    }
-                    Console.Write("\n");
-                }
-            }
-            
-        }
-
-        public void UseItem(Items item)
-        {
-            items.Remove(item);
-        }
-
 
         public void Print()
         {
-            for (int j = 0; j < x; j++)
+            for (int x = 0; x < bagArray.GetLength(0); x++)
             {
-                for (int i = 0; i < y ; i++)
+                for (int y = 0; y < bagArray.GetLength(1); y++)
                 {
-                    Console.Write(bagbox[i, j]);
+                    Console.Write($"{bagArray[x, y]}");
                 }
-                Console.Write("\n");
+                Console.Write($"\n");
             }
-
         }
 
-        public bool FindSpace(int x , int y)
+        public void AddItem(int x, int y, int value)
         {
-            for (int i = 0; i < x; i++)
+            if (x >= 0 && y >= 0 && x < width && y <= height)
             {
-                for (int j = 0; j < y; j++)
+                for (int i = 0; i < bagArray.GetLength(0); i++)
                 {
-                    if(bagbox[i, j] == 0)
+                    bagArray[x, y] = value;
+                }
+
+            }
+        }
+
+        public bool FindPlace()
+        {
+            for (int x = 0; x < bagArray.GetLength(0); x++)
+            {
+                for (int y = 0; y < bagArray.GetLength(1); y++)
+                {
+                    if (bagArray[x, y] == 0)
                     {
+                        if (bagArray.GetLength(0) >= bagArray.GetLength(0) - item.GetLength(0) && bagArray.GetLength(1) >= bagArray.GetLength(1) - item.GetLength(1) && countX >0 && countY >0)
+                        {
+                            for (int i = x ; i <item.GetLength(0)+x; i++)
+                            {
+                                bagArray[i, y] = 1;
+
+                                for (int j = y; j < item.GetLength(1)+y; j++)
+                                {
+                                    bagArray[i, j] = 1;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                            Console.WriteLine("沒空間");
+                        }
+
                         return true;
                     }
-                    else 
+                    else if (bagArray[x, y] == 1)
                     {
-                        //FindSpace()思考怎麼繼續找下去
-                        return false;
-                        Console.WriteLine($"沒有空間");
+                        break;
                     }
                 }
             }
