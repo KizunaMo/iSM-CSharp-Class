@@ -12,6 +12,13 @@ namespace HW6_CSharp
 
         static void Main(string[] args)
         {
+            Bag bag = new Bag();
+            Items items = new Items(Items.ItemsID.healItem);
+            items.Product(Items.ItemsID.healItem);
+            bag.AddItem(items);
+            bag.AddItem(items);
+
+
             Information information = new Information();
             PlayerCmd playerCmd = new PlayerCmd();
             Player player = new Player(new NoWeapon());

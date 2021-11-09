@@ -10,6 +10,8 @@ namespace HW6_CSharp
         string name;
         public string Name { get { return name; } set { name = value; } }
         public int[,] itemArea;
+        Items item;
+        
         public Items()
         {
 
@@ -17,9 +19,10 @@ namespace HW6_CSharp
         public Items(ItemsID itemsID)
         {
             this.name = itemsID.ToString();
-            int x = 1;
-            int y = 1;
+            int x = 2;
+            int y = 2;
             itemArea = new int[x, y];
+
             for (int i = 0; i < x; i++)
             {
                 for (int j = 0; j < y; j++)
@@ -38,17 +41,36 @@ namespace HW6_CSharp
             count,
         }
 
-        public static Items Product(ItemsID itemsID)
+        public Items Product(ItemsID itemsID)
         {
             Items product = new Items(itemsID);
+            int x = 2;
+            int y = 2;
+            itemArea = new int[x, y];
+
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    itemArea[i, j] = 1;
+                }
+            }
+            for (int j = 0; j < x; j++)
+            {
+                for (int i = 0; i < y; i++)
+                {
+                    Console.Write(itemArea[i, j]);
+                }
+                Console.Write("\n");
+            }
             return product;
         }
 
-        public static Items RandomProduct()
+        public Items RandomProduct()
         {
             Random random = new Random();
             int itemsCount = (int)ItemsID.count - 1;
-            return Items.Product((Items.ItemsID)random.Next(1, itemsCount));
+            return item.Product((Items.ItemsID)random.Next(1, itemsCount));
         }
 
         public static int Heal()

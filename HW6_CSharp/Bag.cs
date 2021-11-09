@@ -27,13 +27,25 @@ namespace HW6_CSharp
         public void AddItem(Items item)
         {
             items.Add(item);
-            for (int i = 0; i < 1; i++)
+            if (FindSpace(2, 2))
             {
-                for (int j = 0; j < 1; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    bagbox[i, j] += item.itemArea[i, j];
+                    for (int j = 0; j < 2; j++)
+                    {
+                        bagbox[i, j] += item.itemArea[i, j];
+                    }
+                }
+                for (int j = 0; j < x; j++)
+                {
+                    for (int i = 0; i < y; i++)
+                    {
+                        Console.Write(bagbox[i, j]);
+                    }
+                    Console.Write("\n");
                 }
             }
+            
         }
 
         public void UseItem(Items item)
@@ -44,15 +56,36 @@ namespace HW6_CSharp
 
         public void Print()
         {
-            for (int j = -1; j < x-1; j++)
+            for (int j = 0; j < x; j++)
             {
-                for (int i = -1; i < y-1 ; i++)
+                for (int i = 0; i < y ; i++)
                 {
-                    Console.Write(bagbox[i+1, j+1]);
+                    Console.Write(bagbox[i, j]);
                 }
                 Console.Write("\n");
             }
 
+        }
+
+        public bool FindSpace(int x , int y)
+        {
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    if(bagbox[i, j] == 0)
+                    {
+                        return true;
+                    }
+                    else 
+                    {
+                        //FindSpace()思考怎麼繼續找下去
+                        return false;
+                        Console.WriteLine($"沒有空間");
+                    }
+                }
+            }
+            return false;
         }
 
 
