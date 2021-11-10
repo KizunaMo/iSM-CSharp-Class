@@ -11,7 +11,6 @@ namespace HW6_CSharp
         int height = 9;
         int[,] bagArray;
 
-
         List<Item> items = new List<Item>();
 
         public Bag(int height, int width)
@@ -20,7 +19,6 @@ namespace HW6_CSharp
             this.width = width;
 
             bagArray = new int[height, width];
-
             
             for (int i = 0; i < bagArray.GetLength(0); i++)
             {
@@ -29,7 +27,6 @@ namespace HW6_CSharp
                     bagArray[i, j] = 0;
                 }
             }
-
         }
 
         public void Print()
@@ -41,6 +38,11 @@ namespace HW6_CSharp
                     Console.Write($"{bagArray[x, y]}");
                 }
                 Console.Write($"\n");
+            }
+            Console.Write($"背包裡面有:\n");
+            for (int i = 0; i < items.Count; i++)
+            {
+                Console.WriteLine(items[i].Name);
             }
         }
 
@@ -76,7 +78,5 @@ namespace HW6_CSharp
             }
             return false;
         }
-
-
     }
 }

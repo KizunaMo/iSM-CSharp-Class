@@ -12,11 +12,15 @@ namespace HW6_CSharp
 
         static void Main(string[] args)
         {
-            Bag bag = new Bag(4,4);
+            Bag bag = new Bag(9,9);
             Item item = new HealItem();
-            bag.FindPlaceAndAddItem(itemArray, item);
-            
-
+            Item addPower = new AddPowerItem();
+            bag.FindPlaceAndAddItem(item.ItemArray, item);
+            bag.Print();
+            bag.FindPlaceAndAddItem(item.ItemArray, item);
+            bag.Print();
+            bag.FindPlaceAndAddItem(addPower.ItemArray, addPower);
+            bag.Print();
             Console.WriteLine($"");
             
 
