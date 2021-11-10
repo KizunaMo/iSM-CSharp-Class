@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HW6_CSharp.Items;
 
 namespace HW6_CSharp
 {
@@ -10,24 +11,25 @@ namespace HW6_CSharp
         int height = 9;
         int[,] bagArray;
 
-        int[,] item = new int[2, 2];
 
+        List<Item> items = new List<Item>();
 
-        public Bag(int width, int heigh)
+        public Bag(int height, int width)
         {
+            this.height = height;
             this.width = width;
-            this.height = heigh;
 
-            bagArray = new int[width, heigh];
+            bagArray = new int[height, width];
 
-            item.GetLength(0);
-            for (int i = 0; i < item.GetLength(0); i++)
+            
+            for (int i = 0; i < bagArray.GetLength(0); i++)
             {
-                for (int j = 0; j < item.GetLength(1); j++)
+                for (int j = 0; j < bagArray.GetLength(1); j++)
                 {
-                    item[i, j] = 1;
+                    bagArray[i, j] = 0;
                 }
             }
+
         }
 
         public void Print()
@@ -42,49 +44,33 @@ namespace HW6_CSharp
             }
         }
 
-        public void AddItem(int x, int y, int value)
+        /// <summary>
+        /// 找到地方並填進去
+        /// </summary>
+        /// <param name="itemArray"></param>
+        /// <returns></returns>
+        public bool FindPlaceAndAddItem(int[,] itemArray,Item item)
         {
-            if (x >= 0 && y >= 0 && x < width && y <= height)
+            for (int x = 0; x < bagArray.GetLength(0); x++)//x<4
             {
-                for (int i = 0; i < bagArray.GetLength(0); i++)
-                {
-                    bagArray[x, y] = value;
-                }
-
-            }
-        }
-
-        public bool FindPlace()
-        {
-            for (int x = 0; x < bagArray.GetLength(0); x++)
-            {
-                for (int y = 0; y < bagArray.GetLength(1); y++)
+                for (int y = 0; y < bagArray.GetLength(1); y++)//y<3
                 {
                     if (bagArray[x, y] == 0)
                     {
-                        if (bagArray.GetLength(0) >= bagArray.GetLength(0) - item.GetLength(0) && bagArray.GetLength(1) >= bagArray.GetLength(1) - item.GetLength(1) && countX >0 && countY >0)
+                        if (bagArray.GetLength(0) - x >= itemArray.GetLength(0) && bagArray.GetLength(1)-y >= itemArray.GetLength(1) )
                         {
-                            for (int i = x ; i <item.GetLength(0)+x; i++)
+                            for (int i = x; i < x+itemArray.GetLength(0); i++)
                             {
                                 bagArray[i, y] = 1;
 
-                                for (int j = y; j < item.GetLength(1)+y; j++)
+                                for (int j = y; j < y+itemArray.GetLength(1); j++)
                                 {
                                     bagArray[i, j] = 1;
                                 }
                             }
+                            items.Add(item);
+                            return true;
                         }
-                        else
-                        {
-                            return false;
-                            Console.WriteLine("沒空間");
-                        }
-
-                        return true;
-                    }
-                    else if (bagArray[x, y] == 1)
-                    {
-                        break;
                     }
                 }
             }

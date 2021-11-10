@@ -1,6 +1,6 @@
 ﻿using System;
 using HW6_CSharp.PlayerRole;
-using HW6_CSharp.Mobs;
+using HW6_CSharp.Items;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -12,15 +12,10 @@ namespace HW6_CSharp
 
         static void Main(string[] args)
         {
-            Bag bag = new Bag(9,9);
-            bag.FindPlace();
-            bag.Print();
-            bag.FindPlace();
-            bag.Print();
-            bag.FindPlace();
-            bag.FindPlace();
-            bag.FindPlace();
-            bag.Print();
+            Bag bag = new Bag(4,4);
+            Item item = new HealItem();
+            bag.FindPlaceAndAddItem(itemArray, item);
+            
 
             Console.WriteLine($"");
             

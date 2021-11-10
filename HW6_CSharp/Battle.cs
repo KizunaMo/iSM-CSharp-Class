@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HW6_CSharp.PlayerRole;
 using HW6_CSharp.Mobs;
+using HW6_CSharp.Items;
 
 namespace HW6_CSharp
 {
@@ -44,7 +45,7 @@ namespace HW6_CSharp
                             inBattle = true;
                         break;
                     case 2:
-                        player.HealHP(Items.Heal);
+                        //使用物品
                         break;
                     case 3:
 
