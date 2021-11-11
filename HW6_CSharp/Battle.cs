@@ -12,8 +12,9 @@ namespace HW6_CSharp
         MobManager mobManager = new MobManager();
         Mob mob = new Mob();
 
-        public void BattleTime(Information information, PlayerCmd playerCmd, Player player)
+        public bool BattleTime(Information information, PlayerCmd playerCmd, Player player)
         {
+            mobManager.PrintMobs();
             ChooseMobToBattle(playerCmd);
             bool inBattle = true;
             while (inBattle)
@@ -30,36 +31,37 @@ namespace HW6_CSharp
                             mobManager = new MobManager();
                             Console.WriteLine("重新開始");
                         }
-                        else if (mob.isDead())
-                        {
-                            inBattle = false;
-                            mobManager = new MobManager();
-                            Console.WriteLine($"恭喜擊敗{mob.Name}");
-                        }
                         else if (mobManager.mobsAlive[2].Hp <= 0)
                         {
                             inBattle = false;
                             Console.WriteLine($"恭喜完成任務");
+                            return true;
+                        }
+                        else if (mob.isDead())
+                        {
+                            inBattle = false;
+                            mobManager = new MobManager();
+                            player.playerBag.FindPlaceAndAddItem(mob.DropItem());
+                            Console.WriteLine($"恭喜擊敗{mob.Name}");
                         }
                         else
                             inBattle = true;
                         break;
                     case 2:
-                        //使用物品
+                        ItemManager itemManager = new ItemManager();
+                        itemManager.ChooseItemToUse(information, playerCmd, player); 
                         break;
                     case 3:
-
-                        break;
-                    case 4:
-
+                        inBattle = false;
+                        mobManager.PrintMobs();
                         break;
                 }
             }
+            return false;
         }
 
         private void ChooseMobToBattle(PlayerCmd playerCmd)
         {
-            mobManager.PrintMobs();
             mob = mobManager.PickOne(playerCmd.UseControl(mobManager.mobsAlive.Count));
         }
 
@@ -68,6 +70,6 @@ namespace HW6_CSharp
             player.Attack(mob, player.PowerDamage);
             player.BeAttack(mob.Attack());
         }
-       
+
     }
 }

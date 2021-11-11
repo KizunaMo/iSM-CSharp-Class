@@ -9,9 +9,9 @@ namespace HW6_CSharp.PlayerRole
     {
          string profession = "無職業";
         public virtual string Profession { get { return profession; } set { profession = value; } }
-         int hp = 100;
+         int hp = 210;
         public int Hp { get { return hp; } set { hp = value; } }
-         int maxHp = 100;
+         int maxHp = 300;
         public int MaxHp { get { return maxHp; } set { maxHp = value; } }
          int defultPower = 10;
         public virtual int PowerDamage { get { return defultPower; } set { defultPower = value; } }
@@ -52,12 +52,5 @@ namespace HW6_CSharp.PlayerRole
             return false;
         }
 
-        public void HealHP(Func<int> action)
-        {
-            Hp += action();
-            if (Hp >= maxHp)
-                Hp = maxHp;
-            Console.WriteLine($"玩家補血{action()} 血量{Hp}");
-        }
     }
 }

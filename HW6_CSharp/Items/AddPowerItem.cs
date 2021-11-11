@@ -12,6 +12,8 @@ namespace HW6_CSharp.Items
 
         private int[,] itemArray = new int[3, 2];
         public override int[,] ItemArray { get => base.ItemArray; set => base.ItemArray = value; }
+        int index = 3;
+        public override int Index { get => base.Index; set => base.Index = value; }
 
         public AddPowerItem()
         {
@@ -24,12 +26,19 @@ namespace HW6_CSharp.Items
                     itemArray[i, j] = 1;
                 }
             }
+            Index = index;
         }
 
         public void AddPower(Player player)
         {
-            int addPower = 30;
-            player.PowerDamage += addPower; 
+            int addPower = 90;
+            player.PowerDamage += addPower;
+            Console.WriteLine($"玩家增加傷害{addPower},目前傷害{player.PowerDamage}");
+        }
+        public override void UseItem(Player player)
+        {
+            AddPower(player);
+            base.UseItem(player);
         }
     }
 }

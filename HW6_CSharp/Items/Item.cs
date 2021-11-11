@@ -12,12 +12,18 @@ namespace HW6_CSharp.Items
         int[,] itemArray = new int[1, 1];
         public virtual int[,] ItemArray { get { return itemArray; } set { itemArray = value; } }
 
+        int index = 1;
+        public virtual int Index { get { return index; } set { index = value; } } 
+
         public Item()
         {
             name = Name;
             itemArray = ItemArray;
+            index = Index;
         }
 
-
+        public virtual void UseItem(Player player)
+        {
+        }
     }
 }

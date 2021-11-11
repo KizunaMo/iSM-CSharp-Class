@@ -12,23 +12,12 @@ namespace HW6_CSharp
 
         static void Main(string[] args)
         {
-            Bag bag = new Bag(9,9);
-            Item item = new HealItem();
-            Item addPower = new AddPowerItem();
-            bag.FindPlaceAndAddItem(item.ItemArray, item);
-            bag.Print();
-            bag.FindPlaceAndAddItem(item.ItemArray, item);
-            bag.Print();
-            bag.FindPlaceAndAddItem(addPower.ItemArray, addPower);
-            bag.Print();
-            Console.WriteLine($"");
-            
-
             Information information = new Information();
             PlayerCmd playerCmd = new PlayerCmd();
             Player player = new Player(new NoWeapon());
             Battle battle = new Battle();
             bool isChoosed = true;
+            bool dragonIsDead = false;
             while (isChoosed)
             {
                 ChooseRole(information, playerCmd, ref player, ref isChoosed);
@@ -38,7 +27,7 @@ namespace HW6_CSharp
             {
                 information.ShowInfo(information.MainMenu);
                 int maxNumber;
-                switch (playerCmd.UseControl(maxNumber = 3))
+                switch (playerCmd.UseControl(maxNumber = 4))
                 {
                     case 1:
                         player.PrintStatus();
@@ -47,11 +36,17 @@ namespace HW6_CSharp
                         player.playerBag.Print();
                         break;
                     case 3:
-                        battle.BattleTime(information, playerCmd, player);
+                        dragonIsDead = battle.BattleTime(information, playerCmd, player);
                         if(player.Hp<=0)
                             ChooseRole(information, playerCmd, ref player, ref isChoosed);
                         break;
+                    case 4:
+                        ItemManager itemManager = new ItemManager();
+                        itemManager.ChooseItemToUse(information, playerCmd, player);
+                        break;
                 }
+                if (dragonIsDead == true)
+                    break;
             }
         }
         /// <summary>

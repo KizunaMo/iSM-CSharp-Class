@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HW6_CSharp.Items;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,6 +24,13 @@ namespace HW6_CSharp.Mobs
         public override int Attack()
         {
             return Power;
+        }
+
+        public override Item DropItem()
+        {
+            Item item = new AddPowerItem();
+            Console.WriteLine($"掉落{item.Name}");
+            return item;
         }
     }
 }
